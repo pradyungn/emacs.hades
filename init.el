@@ -29,7 +29,7 @@
 (setq split-width-threshold nil)
 
 ;; default font - if mountain fails, don't want to be blinded
-(load-theme 'wombat t)
+;; (load-theme 'wombat t)
 
 ;; font scaling - allows for standardized font sizing
 (setq face-font-rescale-alist
@@ -38,9 +38,9 @@
         ))
 
 ;; fonts
-(set-face-attribute 'default nil :font "Myosevka Semi-Condensed" :height 130 :weight 'light)
-(set-face-attribute 'fixed-pitch nil :font "Myosevka Semi-Condensed" :height 130 :weight 'light)
-(set-face-attribute 'variable-pitch nil :font "EB Garamond" :height 130 :weight 'regular)
+(set-face-attribute 'default nil :font "PragmataPro Mono Liga" :height 120)
+(set-face-attribute 'fixed-pitch nil :font "PragmataPro Mono Liga" :height 120)
+(set-face-attribute 'variable-pitch nil :font "EB Garamond" :height 120 :weight 'regular)
 
 ;; prevent resize window on startup
 (setq frame-inhibit-implied-resize t)
@@ -470,12 +470,20 @@ _h_   _l_   _n_ew       _-_ dec height
   (org-hide-leading-stars t)
   (org-hide-emphasis-markers t)
   (org-babel-python-command "python3")
-  ;; (org-agenda-files '("~/Documents/Notes/Tasks.org"))
+  (org-tags-column 0)
+  (org-agenda-tags-column 0)
+  (org-agenda-files '("~/Documents/Notes/Tasks.org"))
   (org-todo-keyword-faces '(("REQUIRED" . "#ac8a8c")
-                            ("IP" . org-todo)
-                            ("TODO" . org-todo)
-                            ("DONE" . org-done)
-                            ("STALE" . "#8aacab")))
+                            ("TODO"     . org-todo)
+                            ("IP"       . "#8f8aac")
+                            ("DONE"     . org-done)
+                            ("STALE"    . "#8aacab")))
+
+  (org-tag-faces '(("425" . "#8aac8b")
+                   ("513" . "#8f8aac")
+                   ("511" . "#8aacab")
+                   ("496" . "#aca98a")))
+
   (org-latex-logfiles-extensions
    (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl"))))
 
@@ -536,17 +544,16 @@ _h_   _l_   _n_ew       _-_ dec height
   (dashboard-banner-logo-title "Oh, not this shit again...")
   (dashboard-startup-banner 'logo)
   (dashboard-center-content t)
+  (dashboard-vertically-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
   (dashboard-display-icons-p t)
-  (dashboard-vertically-center-content t)
   (dashboard-icon-type 'nerd-icons)
   (dashboard-projects-backend 'projectile)
   (dashboard-projects-switch-function 'counsel-projectile-switch-project-by-name)
   (dashboard-items '((recents  . 5)
 		             (bookmarks . 3)
-		             (projects . 3)
-		             (agenda . 3))))
+		             (projects . 3))))
 
 ;; dashboard hook doesn't really work
 (setq initial-buffer-choice (lambda ()
@@ -641,6 +648,7 @@ _h_   _l_   _n_ew       _-_ dec height
 
   "ot" '(vterm :which-key "term")
   "oz" '(darkroom-mode :which-key "zen")
+  "oa" '(org-agenda :which-key "agenda")
   )
 
 ;; text-scaling
@@ -671,7 +679,7 @@ _h_   _l_   _n_ew       _-_ dec height
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("d225c008d53d789cdd96e5f3f1a1be77f1eeb4883a82f6345c2a2782bc603275" "603876c8fe23371998d7aa13dc488fd6cb6167f2a74ae9db46ffdf6987d90018" "6d4309dd9dcab7cbb8fd8cb3982273d7923e8aea903a397eacf042e1ed4473f4" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "f64189544da6f16bab285747d04a92bd57c7e7813d8c24c30f382f087d460a33" "5a616566cd92da30acd38f0c403e46e214301651db2a66c4062c7801adc7d24b" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "0ed3704b821ef38be5bfa7f2d10639b3cfb7ecbea9d86edf6a85214074eb2212" "9aff615f9069aff51f92b1463c21d47ad6138f5ffcd546cc245383be0b3d7a0f" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" default))
+   '("13096a9a6e75c7330c1bc500f30a8f4407bd618431c94aeab55c9855731a95e1" "4e2e42e9306813763e2e62f115da71b485458a36e8b4c24e17a2168c45c9cf9d" "7c28419e963b04bf7ad14f3d8f6655c078de75e4944843ef9522dbecfcd8717d" "8b8072ed8e6de789c172ba69a9df899a8525d54ab278b9bc523968066d79ae24" "691d671429fa6c6d73098fc6ff05d4a14a323ea0a18787daeb93fde0e48ab18b" "4ade6b630ba8cbab10703b27fd05bb43aaf8a3e5ba8c2dc1ea4a2de5f8d45882" "d6b934330450d9de1112cbb7617eaf929244d192c4ffb1b9e6b63ad574784aad" "d225c008d53d789cdd96e5f3f1a1be77f1eeb4883a82f6345c2a2782bc603275" "603876c8fe23371998d7aa13dc488fd6cb6167f2a74ae9db46ffdf6987d90018" "6d4309dd9dcab7cbb8fd8cb3982273d7923e8aea903a397eacf042e1ed4473f4" "e3daa8f18440301f3e54f2093fe15f4fe951986a8628e98dcd781efbec7a46f2" "f64189544da6f16bab285747d04a92bd57c7e7813d8c24c30f382f087d460a33" "5a616566cd92da30acd38f0c403e46e214301651db2a66c4062c7801adc7d24b" "1a1ac598737d0fcdc4dfab3af3d6f46ab2d5048b8e72bc22f50271fd6d393a00" "0ed3704b821ef38be5bfa7f2d10639b3cfb7ecbea9d86edf6a85214074eb2212" "9aff615f9069aff51f92b1463c21d47ad6138f5ffcd546cc245383be0b3d7a0f" "944d52450c57b7cbba08f9b3d08095eb7a5541b0ecfb3a0a9ecd4a18f3c28948" default))
  '(package-selected-packages
    '(auctex eglot darkroom zen-mode rg openwith evil-surround org-roam evil-snipe hide-mode-line lsp-mode ein markdown-mode which-key vterm visual-fill-column use-package undo-fu-session undo-fu rainbow-delimiters org-bullets no-littering magit ivy-rich hydra helpful general format-all evil-collection doom-themes doom-modeline dired-single dashboard counsel-projectile))
  '(warning-suppress-types '((emacs) (comp))))
